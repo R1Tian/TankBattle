@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
 
-namespace QFramework.Example
+namespace QFramework.TankBattle
 {
 	// Generate Id:f5a1e9ca-55a4-4a71-8650-224f53376e9a
 	public partial class UIMainScenePanel

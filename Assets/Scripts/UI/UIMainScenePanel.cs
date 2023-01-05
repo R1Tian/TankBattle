@@ -1,13 +1,17 @@
+using System;
+using Fusion;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using Unity.VisualScripting;
 
-namespace QFramework.Example
+namespace QFramework.TankBattle
 {
 	public class UIMainScenePanelData : UIPanelData
 	{
-		public string joinLobbyInfo;
-		public string exitGameInfo;
+		public Action<SessionLobby, string> joinLobbyAction;
+		public SessionLobby sessionLobbyType;
+		public string lobbyID;
 	}
 	public partial class UIMainScenePanel : UIPanel
 	{
@@ -16,15 +20,18 @@ namespace QFramework.Example
 			mData = uiData as UIMainScenePanelData ?? new UIMainScenePanelData();
 			// please add init code here
 			
+			UIKit.Root.SetResolution(1920, 1080, 0);
+
 			JoinRoomBtn.onClick.AddListener(() =>
 			{
-				Debug.Log(mData.joinLobbyInfo);
+				mData.joinLobbyAction?.Invoke(mData.sessionLobbyType, mData.lobbyID);
 			});
 			
 			ExitGameBtn.onClick.AddListener(() =>
 			{
-				Debug.Log(mData.exitGameInfo);
+				
 			});
+			
 		}
 		
 		protected override void OnOpen(IUIData uiData = null)
