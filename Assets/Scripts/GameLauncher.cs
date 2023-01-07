@@ -1,21 +1,20 @@
-﻿using System;
-using Fusion;
+﻿using Fusion;
 using QFramework;
 using QFramework.TankBattle;
 using UnityEngine;
 
 namespace TankBattle
 {
-    public class GameLauncher : MonoBehaviour, IController
+    [MonoSingletonPath("[Singleton]/GameLauncher")]
+    public class GameLauncher : MonoSingleton<GameLauncher>, IController
     {
         public IArchitecture GetArchitecture()
         {
             throw new System.NotImplementedException();
         }
 
-        private void Awake()
+        protected void Awake()
         {
-            DontDestroyOnLoad(gameObject);
             ResKit.Init();
         }
 
@@ -23,12 +22,15 @@ namespace TankBattle
         {
             OpenMainSceneUI();
         }
+        
 
         private void OpenMainSceneUI()
         {
             UIMainScenePanelData uiMainScenePanelData = new UIMainScenePanelData
             {
-                
+                joinLobbyFunc = FusionLauncher.Instance.JoinLobby,
+                sessionLobbyType = SessionLobby.ClientServer,
+                lobbyID = "DefaultLobby"
             };
             UIKit.OpenPanel<UIMainScenePanel>(uiMainScenePanelData);
         }

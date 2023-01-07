@@ -1,15 +1,17 @@
 using System;
+using Cysharp.Threading.Tasks;
 using Fusion;
 using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
+using TankBattle;
 using Unity.VisualScripting;
 
 namespace QFramework.TankBattle
 {
 	public class UIMainScenePanelData : UIPanelData
 	{
-		public Action<SessionLobby, string> joinLobbyAction;
+		public Func<SessionLobby, string, UniTaskVoid> joinLobbyFunc;
 		public SessionLobby sessionLobbyType;
 		public string lobbyID;
 	}
@@ -24,7 +26,7 @@ namespace QFramework.TankBattle
 
 			JoinRoomBtn.onClick.AddListener(() =>
 			{
-				mData.joinLobbyAction?.Invoke(mData.sessionLobbyType, mData.lobbyID);
+				mData.joinLobbyFunc?.Invoke(mData.sessionLobbyType, mData.lobbyID);
 			});
 			
 			ExitGameBtn.onClick.AddListener(() =>
