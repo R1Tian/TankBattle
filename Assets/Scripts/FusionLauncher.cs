@@ -6,6 +6,7 @@ using Fusion;
 using Fusion.Sockets;
 using QAssetBundle;
 using QFramework;
+using QFramework.TankBattle;
 using UnityEngine;
 
 namespace TankBattle
@@ -68,13 +69,20 @@ namespace TankBattle
             if (result.Ok)
             {
                 Debug.Log("[FusionLauncher] <JoinLobby> JoinSessionLobby succeed");
+                ResLoader.LoadSceneAsync(Lobbyscene_unity.LOBBYSCENE, onStartLoading: operation =>
+                {
+                    operation.completed += asyncOperation =>
+                    {
+                        Debug.Log("LobbyScene 加载完成");
+                        UIKit.ClosePanel<UIMainScenePanel>();
+                        UIKit.OpenPanel<UILobbyPanel>();
+                    };
+                });
             }
             else
             {
                 Debug.Log($"[FusionLauncher] <JoinLobby> {result.ShutdownReason}");
             }
-            
-            
         }
 
         #region + Utility

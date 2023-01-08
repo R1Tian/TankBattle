@@ -61,6 +61,16 @@ namespace QAssetBundle
         public const string BundleName = "imageprefabc_prefab";
         public const string IMAGEPREFABC = "imageprefabc";
     }
+    public class Lobbyscene_unity
+    {
+        public const string BundleName = "lobbyscene_unity";
+        public const string LOBBYSCENE = "lobbyscene";
+    }
+    public class Mainscene_unity
+    {
+        public const string BundleName = "mainscene_unity";
+        public const string MAINSCENE = "mainscene";
+    }
     public class Sceneres_unity
     {
         public const string BundleName = "sceneres_unity";
