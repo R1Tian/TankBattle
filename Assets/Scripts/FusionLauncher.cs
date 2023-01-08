@@ -60,6 +60,7 @@ namespace TankBattle
             {
                 NetworkRunner = NetworkCore.Instance.GetNetworkRunner();
                 NetworkRunner.ProvideInput = true;
+                NetworkRunner.AddCallbacks(this);
             }
 
             Debug.Log("[FusionLauncher] <JoinLobby> JoinSessionLobby Start");
@@ -72,6 +73,7 @@ namespace TankBattle
             {
                 Debug.Log($"[FusionLauncher] <JoinLobby> {result.ShutdownReason}");
             }
+            
             
         }
 
@@ -105,6 +107,7 @@ namespace TankBattle
 
         public void OnConnectedToServer(NetworkRunner runner)
         {
+            Debug.Log("ConnectedToServer");
         }
 
         public void OnDisconnectedFromServer(NetworkRunner runner)
@@ -126,6 +129,7 @@ namespace TankBattle
 
         public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
         {
+            Debug.Log("SessionListUpdated");
         }
 
         public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)

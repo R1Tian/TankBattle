@@ -10,6 +10,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6b15a87f1474ba9b6a19a00558a1f6f8e600/d3/3b3f16b5/NetworkRunner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/QFrameworkData/QAssets.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -77,6 +81,7 @@
       <workItem from="1672929211805" duration="4037000" />
       <workItem from="1673004458302" duration="2374000" />
       <workItem from="1673009240440" duration="7442000" />
+      <workItem from="1673066799812" duration="21236000" />
     </task>
     <servers />
   </component>

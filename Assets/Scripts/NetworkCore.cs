@@ -7,6 +7,8 @@ namespace TankBattle
     [MonoSingletonPath("[Singleton]/NetworkCore")]
     public class NetworkCore : MonoSingleton<NetworkCore>
     {
+        public NetworkRunner NetworkRunner => gameObject.GetComponent<NetworkRunner>();
+        
         public override void OnSingletonInit()
         {
             
