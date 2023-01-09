@@ -7,11 +7,12 @@ using Fusion.Sockets;
 using QAssetBundle;
 using QFramework;
 using QFramework.TankBattle;
+using TankBattle.Lobby;
 using UnityEngine;
 
 namespace TankBattle
 {
-    public class FusionLauncher : ISingleton, INetworkRunnerCallbacks
+    public class FusionLauncher : ISingleton, INetworkRunnerCallbacks, IController
     {
         #region + Singleton
         public static FusionLauncher Instance => SingletonProperty<FusionLauncher>.Instance;
@@ -22,6 +23,14 @@ namespace TankBattle
         }
         
         private FusionLauncher() {}
+        
+        #endregion
+
+        #region + IController
+        public IArchitecture GetArchitecture()
+        {
+            return LobbyArchitecture.Interface;
+        }
         
         #endregion
 
@@ -138,6 +147,10 @@ namespace TankBattle
         public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
         {
             Debug.Log("SessionListUpdated");
+            this.SendCommand<UpdateSessionListCommand>(new UpdateSessionListCommand
+            {
+                sessionList = sessionList,
+            });
         }
 
         public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
@@ -161,6 +174,7 @@ namespace TankBattle
         }
         #endregion
 
-        
+
+
     }
 }
