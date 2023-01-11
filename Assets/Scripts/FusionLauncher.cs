@@ -7,6 +7,7 @@ using Fusion.Sockets;
 using QAssetBundle;
 using QFramework;
 using QFramework.TankBattle;
+using TankBattle.FusionHelper;
 using TankBattle.Lobby;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace TankBattle
 {
     public class FusionLauncher : ISingleton, INetworkRunnerCallbacks, IController
     {
-        #region + Singleton
+        #region + ISingleton
         public static FusionLauncher Instance => SingletonProperty<FusionLauncher>.Instance;
 
         public void OnSingletonInit()
@@ -54,6 +55,12 @@ namespace TankBattle
         {
             get
             {
+                if (networkRunner == null)
+                {
+                    networkRunner = NetworkCore.Instance.GetNetworkRunner();
+                    networkRunner.ProvideInput = true;
+                    networkRunner.AddCallbacks(this);
+                }
                 return networkRunner;
             }
             set
@@ -66,13 +73,6 @@ namespace TankBattle
         
         public async UniTaskVoid JoinLobby(SessionLobby sessionLobbyType, string lobbyID = null)
         {
-            if (NetworkRunner == null)
-            {
-                NetworkRunner = NetworkCore.Instance.GetNetworkRunner();
-                NetworkRunner.ProvideInput = true;
-                NetworkRunner.AddCallbacks(this);
-            }
-
             Debug.Log("[FusionLauncher] <JoinLobby> JoinSessionLobby Start");
             StartGameResult result = await NetworkRunner.JoinSessionLobby(sessionLobbyType, lobbyID);
             if (result.Ok)
@@ -91,6 +91,24 @@ namespace TankBattle
             else
             {
                 Debug.Log($"[FusionLauncher] <JoinLobby> {result.ShutdownReason}");
+            }
+        }
+
+        public async UniTaskVoid CreateRoom(string roomName, int maxPlayer)
+        {
+            Debug.Log($"[FusionLauncher] <JoinLobby> CreateRoom Start");
+            StartGameResult result = await NetworkRunner.StartGame(new StartGameArgs
+            {
+                GameMode = GameMode.Host,
+                SessionName = roomName,
+                PlayerCount = maxPlayer,
+                SceneManager = LevelManager.Instance,
+                ObjectPool = FusionObjectPoolRoot.Instance
+            });
+
+            if (result.Ok)
+            {
+                Debug.Log($"[FusionLauncher] <JoinLobby> CreateRoom succeed");
             }
         }
 

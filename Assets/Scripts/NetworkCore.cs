@@ -8,7 +8,7 @@ namespace TankBattle
     public class NetworkCore : MonoSingleton<NetworkCore>
     {
         public NetworkRunner NetworkRunner => gameObject.GetComponent<NetworkRunner>();
-        
+
         public override void OnSingletonInit()
         {
             
@@ -25,5 +25,7 @@ namespace TankBattle
                 return gameObject.AddComponent<NetworkRunner>();
             }
         }
+
+
     }
 }
