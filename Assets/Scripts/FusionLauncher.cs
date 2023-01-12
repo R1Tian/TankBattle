@@ -96,7 +96,7 @@ namespace TankBattle
 
         public async UniTaskVoid CreateRoom(string roomName, int maxPlayer)
         {
-            Debug.Log($"[FusionLauncher] <JoinLobby> CreateRoom Start");
+            Debug.Log($"[FusionLauncher] <CreateRoom> CreateRoom Start");
             StartGameResult result = await NetworkRunner.StartGame(new StartGameArgs
             {
                 GameMode = GameMode.Host,
@@ -108,7 +108,32 @@ namespace TankBattle
 
             if (result.Ok)
             {
-                Debug.Log($"[FusionLauncher] <JoinLobby> CreateRoom succeed");
+                Debug.Log($"[FusionLauncher] <CreateRoom> CreateRoom succeed");
+            }
+            else
+            {
+                Debug.Log($"[FusionLauncher] <CreateRoom> CreateRoom Failed Because {result.ErrorMessage}");
+            }
+        }
+
+        public async UniTaskVoid JoinRoom(string roomName)
+        {
+            Debug.Log($"[FusionLauncher] <JoinRoom> JoinRoom Start");
+            StartGameResult result = await NetworkRunner.StartGame(new StartGameArgs
+            {
+                GameMode = GameMode.Client,
+                SessionName = roomName,
+                SceneManager = LevelManager.Instance,
+                ObjectPool = FusionObjectPoolRoot.Instance
+            });
+
+            if (result.Ok)
+            {
+                Debug.Log($"[FusionLauncher] <JoinRoom> JoinRoom succeed");
+            }
+            else
+            {
+                Debug.Log($"[FusionLauncher] <CreateRoom> JoinRoom Failed Because {result.ErrorMessage}");
             }
         }
 

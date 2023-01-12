@@ -5,7 +5,7 @@ using QFramework;
 
 namespace QFramework.TankBattle
 {
-	// Generate Id:72467d55-ab88-455d-9cdd-83bb1b70c477
+	// Generate Id:63315da2-c23f-4235-8a26-961e013a5a9c
 	public partial class UILobbyPanel
 	{
 		public const string Name = "UILobbyPanel";
@@ -13,17 +13,29 @@ namespace QFramework.TankBattle
 		[SerializeField]
 		public UnityEngine.UI.Image Background;
 		[SerializeField]
-		public UnityEngine.UI.Image Title;
+		public UnityEngine.UI.Image LobbyTitle;
 		[SerializeField]
-		public RectTransform ScrollViewContainer;
+		public UnityEngine.UI.Image CreateRoomTitle;
+		[SerializeField]
+		public RectTransform RoomListScrollViewContainer;
+		[SerializeField]
+		public RectTransform CreateRoomScrollViewContainer;
+		[SerializeField]
+		public UnityEngine.UI.Button CreateRoomButton;
+		[SerializeField]
+		public UnityEngine.UI.Button BackToRoomListButton;
 		
 		private UILobbyPanelData mPrivateData = null;
 		
 		protected override void ClearUIComponents()
 		{
 			Background = null;
-			Title = null;
-			ScrollViewContainer = null;
+			LobbyTitle = null;
+			CreateRoomTitle = null;
+			RoomListScrollViewContainer = null;
+			CreateRoomScrollViewContainer = null;
+			CreateRoomButton = null;
+			BackToRoomListButton = null;
 			
 			mData = null;
 		}
