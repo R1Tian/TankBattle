@@ -4,7 +4,7 @@ using QFramework;
 
 namespace TankBattle.Lobby
 {
-    public class LobbyModel:AbstractModel
+    public class LobbyModel : AbstractModel
     {
         public List<SessionInfo> sessionList;
 

@@ -84,7 +84,10 @@ namespace TankBattle
                     {
                         Debug.Log("LobbyScene 加载完成");
                         UIKit.ClosePanel<UIMainScenePanel>();
-                        UIKit.OpenPanel<UILobbyPanel>();
+                        UIKit.OpenPanel<UILobbyPanel>(new UILobbyPanelData
+                        {
+                            lobbyPanelState = UILobbyPanel.LobbyPanelState.JoinRoom
+                        });
                     };
                 });
             }

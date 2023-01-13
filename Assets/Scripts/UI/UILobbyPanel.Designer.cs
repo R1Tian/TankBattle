@@ -5,7 +5,7 @@ using QFramework;
 
 namespace QFramework.TankBattle
 {
-	// Generate Id:63315da2-c23f-4235-8a26-961e013a5a9c
+	// Generate Id:9cfc6b20-52c9-4f5d-9271-dc86861d274f
 	public partial class UILobbyPanel
 	{
 		public const string Name = "UILobbyPanel";
@@ -19,11 +19,21 @@ namespace QFramework.TankBattle
 		[SerializeField]
 		public RectTransform RoomListScrollViewContainer;
 		[SerializeField]
+		public RectTransform RoomListScrollViewContent;
+		[SerializeField]
 		public RectTransform CreateRoomScrollViewContainer;
+		[SerializeField]
+		public TMPro.TMP_InputField RoomNameInputField;
+		[SerializeField]
+		public TMPro.TMP_Dropdown PlayerNumberDropdown;
+		[SerializeField]
+		public UnityEngine.UI.Button EnterCreateRoomStateButton;
+		[SerializeField]
+		public UnityEngine.UI.Button BackToRoomListButton;
 		[SerializeField]
 		public UnityEngine.UI.Button CreateRoomButton;
 		[SerializeField]
-		public UnityEngine.UI.Button BackToRoomListButton;
+		public TMPro.TextMeshProUGUI NoExistingRoomText;
 		
 		private UILobbyPanelData mPrivateData = null;
 		
@@ -33,9 +43,14 @@ namespace QFramework.TankBattle
 			LobbyTitle = null;
 			CreateRoomTitle = null;
 			RoomListScrollViewContainer = null;
+			RoomListScrollViewContent = null;
 			CreateRoomScrollViewContainer = null;
-			CreateRoomButton = null;
+			RoomNameInputField = null;
+			PlayerNumberDropdown = null;
+			EnterCreateRoomStateButton = null;
 			BackToRoomListButton = null;
+			CreateRoomButton = null;
+			NoExistingRoomText = null;
 			
 			mData = null;
 		}
