@@ -150,6 +150,7 @@ namespace TankBattle
 
         public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
         {
+            Debug.Log("PlayerJoined");
         }
 
         public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)

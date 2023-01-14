@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace TankBattle.FusionHelper
 {
+	[MonoSingletonPath("[Singleton]/FusionObjectPoolRoot")]
     public class FusionObjectPoolRoot: MonoBehaviour, INetworkObjectPool, ISingleton
     {
 	    #region + ISingleton
