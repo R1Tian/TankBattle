@@ -4,11 +4,13 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Fusion;
 using Fusion.Sockets;
+using MoreMountains.Feedbacks;
 using QAssetBundle;
 using QFramework;
 using QFramework.TankBattle;
 using TankBattle.FusionHelper;
 using TankBattle.Lobby;
+using TankBattle.MMFadeHelper;
 using UnityEngine;
 
 namespace TankBattle
@@ -34,6 +36,16 @@ namespace TankBattle
         }
         
         #endregion
+        
+        public enum ConnectionState
+        {
+            Disconnected,
+            Connecting,
+            ConnectFailed,
+            Connected,
+            Loading,
+            Loaded
+        }
 
         #region + Field
         private ResLoader resLoader = null;
@@ -68,12 +80,40 @@ namespace TankBattle
                 networkRunner = value;
             }
         }
+
+        private ConnectionState state = ConnectionState.Disconnected;
+
+        public ConnectionState State
+        {
+            get => state;
+            set
+            {
+                if (value != state)
+                {
+                    state = value;
+                }
+            }
+        }
         
         #endregion
         
         public async UniTaskVoid JoinLobby(SessionLobby sessionLobbyType, string lobbyID = null)
         {
+            // 只有在 Disconnected 情况下才可以进入 Lobby
+            if (state != ConnectionState.Disconnected)
+            {
+                return;
+            }
+            
             Debug.Log("[FusionLauncher] <JoinLobby> JoinSessionLobby Start");
+            
+            // 设置连接状态
+            State = ConnectionState.Connecting;
+            
+            // 获取 Fade 动画
+            MMF_Player fadeDirectional = MMFadeUtility.GetFadeDirectionalPlayer();
+            fadeDirectional.PlayFeedbacks();
+
             StartGameResult result = await NetworkRunner.JoinSessionLobby(sessionLobbyType, lobbyID);
             if (result.Ok)
             {
@@ -90,11 +130,15 @@ namespace TankBattle
                         });
                     };
                 });
+                State = ConnectionState.Connected;
             }
             else
             {
                 Debug.Log($"[FusionLauncher] <JoinLobby> {result.ShutdownReason}");
+                State = ConnectionState.Disconnected;
             }
+            
+            fadeDirectional.ResumeFeedbacks();
         }
 
         public async UniTaskVoid CreateRoom(string roomName, int maxPlayer)

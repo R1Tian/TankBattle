@@ -71,6 +71,11 @@ namespace QAssetBundle
         public const string BundleName = "mainscene_unity";
         public const string MAINSCENE = "mainscene";
     }
+    public class Mmfadedirectional_prefab
+    {
+        public const string BundleName = "mmfadedirectional_prefab";
+        public const string MMFADEDIRECTIONAL = "mmfadedirectional";
+    }
     public class Roomcell_prefab
     {
         public const string BundleName = "roomcell_prefab";
@@ -95,6 +100,11 @@ namespace QAssetBundle
     {
         public const string BundleName = "uibasicpanel_prefab";
         public const string UIBASICPANEL = "uibasicpanel";
+    }
+    public class Uiloadpanel_prefab
+    {
+        public const string BundleName = "uiloadpanel_prefab";
+        public const string UILOADPANEL = "uiloadpanel";
     }
     public class Uilobbypanel_prefab
     {

@@ -21,6 +21,7 @@ namespace TankBattle
         private void Start()
         {
             OpenMainSceneUI();
+            UIKit.OpenPanel<UILoadPanel>();
         }
         
 

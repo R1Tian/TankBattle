@@ -30,10 +30,7 @@ namespace TankBattle
         protected override void Shutdown(NetworkRunner runner)
         {
             base.Shutdown(runner);
-            if (loadedScene != default)
-            {
-                LoadLevel(0);
-            }
+
         }
 
         public void LoadLevel(int levelIndex)
