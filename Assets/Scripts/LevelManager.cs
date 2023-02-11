@@ -47,7 +47,7 @@ namespace TankBattle
 
         protected override IEnumerator SwitchScene(SceneRef prevScene, SceneRef newScene, FinishedLoadingDelegate finished)
         {
-            throw new System.NotImplementedException();
+            yield return null;
         }
 
        
