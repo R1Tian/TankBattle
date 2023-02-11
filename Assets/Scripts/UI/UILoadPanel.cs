@@ -13,12 +13,11 @@ namespace QFramework.TankBattle
 		{
 			mData = uiData as UILoadPanelData ?? new UILoadPanelData();
 			// please add init code here
-			
-			UIKit.Root.SetResolution(1920, 1080, 0);
 		}
 		
 		protected override void OnOpen(IUIData uiData = null)
 		{
+
 		}
 		
 		protected override void OnShow()

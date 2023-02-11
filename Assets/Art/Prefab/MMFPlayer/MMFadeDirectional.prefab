@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1618400533129062138}
-  - component: {fileID: -989062943996210566}
+  - component: {fileID: 8422227779470920120}
   m_Layer: 0
   m_Name: MMFadeDirectional
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-989062943996210566
+--- !u!114 &8422227779470920120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   CooldownDuration: 0
   InitialDelay: 0
   CanPlay: 1
-  CanPlayWhileAlreadyPlaying: 0
+  CanPlayWhileAlreadyPlaying: 1
   ChanceToPlay: 100
   FeedbacksIntensity: 1
   Events:
@@ -114,20 +114,20 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 6251397955961487365
-  - rid: 6251397955961487366
-  - rid: 6251397955961487367
+  - rid: 6094140209931485184
+  - rid: 6094140209931485185
+  - rid: 6094140209931485186
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
     version: 2
     RefIds:
-    - rid: 6251397955961487365
+    - rid: 6094140209931485184
       type: {class: MMF_Fade, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
       data:
         Active: 1
-        UniqueID: -1767789507
+        UniqueID: 481641100
         Label: Fade
         ChannelMode: 0
         Channel: 0
@@ -186,11 +186,11 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         RemapRangeFalloff: {x: 0, y: 1}
-        Owner: {fileID: -989062943996210566}
+        Owner: {fileID: 8422227779470920120}
         DebugActive: 0
         FadeType: 0
         ID: 0
-        Duration: 1
+        Duration: 0.8
         Curve:
           MMTweenDefinitionType: 0
           MMTweenCurve: 4
@@ -225,11 +225,11 @@ MonoBehaviour:
         TargetTransform: {fileID: 0}
         TargetPosition: {x: 0, y: 0, z: 0}
         PositionOffset: {x: 0, y: 0, z: 0}
-    - rid: 6251397955961487366
+    - rid: 6094140209931485185
       type: {class: MMF_HoldingPause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: 679708042
+        UniqueID: -487526200
         Label: Holding Pause
         ChannelMode: 0
         Channel: 0
@@ -237,12 +237,12 @@ MonoBehaviour:
         Chance: 100
         DisplayColor: {r: 0, g: 0, b: 0, a: 1}
         Timing:
-          TimescaleMode: 1
+          TimescaleMode: 0
           ExcludeFromHoldingPauses: 0
           ContributeToTotalDuration: 1
           InitialDelay: 0
           CooldownDuration: 0
-          InterruptsOnStop: 0
+          InterruptsOnStop: 1
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         RemapRangeFalloff: {x: 0, y: 1}
-        Owner: {fileID: -989062943996210566}
+        Owner: {fileID: 8422227779470920120}
         DebugActive: 0
         PauseDuration: 1
         RandomizePauseDuration: 0
@@ -298,11 +298,11 @@ MonoBehaviour:
         ScriptDriven: 1
         AutoResume: 0
         AutoResumeAfter: 0.25
-    - rid: 6251397955961487367
+    - rid: 6094140209931485186
       type: {class: MMF_Fade, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
       data:
         Active: 1
-        UniqueID: -1521697535
+        UniqueID: -2102993855
         Label: Fade
         ChannelMode: 0
         Channel: 0
@@ -361,11 +361,11 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         RemapRangeFalloff: {x: 0, y: 1}
-        Owner: {fileID: -989062943996210566}
+        Owner: {fileID: 8422227779470920120}
         DebugActive: 0
         FadeType: 1
         ID: 0
-        Duration: 1
+        Duration: 0.8
         Curve:
           MMTweenDefinitionType: 0
           MMTweenCurve: 4

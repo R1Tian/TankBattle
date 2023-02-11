@@ -5,16 +5,19 @@ using QFramework;
 
 namespace QFramework.TankBattle
 {
-	// Generate Id:a1539b77-7979-4261-8ac2-62e073b063f9
+	// Generate Id:87319e04-74e1-4bae-80b2-db3ff73e899a
 	public partial class UILoadPanel
 	{
 		public const string Name = "UILoadPanel";
 		
+		[SerializeField]
+		public UnityEngine.RectTransform FadeDirectional;
 		
 		private UILoadPanelData mPrivateData = null;
 		
 		protected override void ClearUIComponents()
 		{
+			FadeDirectional = null;
 			
 			mData = null;
 		}

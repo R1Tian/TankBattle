@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1064950340}
   - component: {fileID: 1064950339}
   - component: {fileID: 1064950342}
-  - component: {fileID: 1064950341}
+  - component: {fileID: 7584661225534890203}
+  - component: {fileID: 5936912071306067050}
   m_Layer: 0
   m_Name: FadeDirectional
   m_TagString: Untagged
@@ -90,7 +91,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1064950341
+--- !u!114 &7584661225534890203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,6 +143,22 @@ MonoBehaviour:
   FadeOut1SecondButton: 0
   DefaultFadeButton: 0
   ResetFaderButton: 0
+--- !u!114 &5936912071306067050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064950337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MarkType: 0
+  CustomComponentName: FadeDirectional
+  CustomComment: 
+  mComponentName: UnityEngine.RectTransform
 --- !u!1 &5166086862147727171
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,3 +209,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a734e78a6b429994ba6922a0ff61c42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeDirectional: {fileID: 1064950338}
