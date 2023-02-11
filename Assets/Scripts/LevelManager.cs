@@ -21,8 +21,15 @@ namespace TankBattle
         
         #endregion
         
-        private int readyRoom = 2;
-        private List<int> battlegroundList = new List<int>() { 3, 4 };
+        public enum RoomIndex
+        {
+            ReadyRoom = 2,
+            Arena1 = 3,
+            Arena2 = 4
+        }
+        
+        // private int readyRoom = RoomIndex.ReadyRoom;
+        // private List<int> battlegroundList = new List<int>() { 3, 4 };
         
         private Scene loadedScene;
 

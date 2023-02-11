@@ -82,7 +82,6 @@ namespace TankBattle
         }
 
         private ConnectionState state = ConnectionState.Disconnected;
-
         public ConnectionState State
         {
             get => state;
@@ -94,6 +93,11 @@ namespace TankBattle
                 }
             }
         }
+        
+        private Action<NetworkRunner, ConnectionState, string> connectionCallback;
+        private Action<NetworkRunner> spawnWorldCallback;
+        private Action<NetworkRunner,PlayerRef> spawnPlayerCallback;
+        private Action<NetworkRunner,PlayerRef> despawnPlayerCallback;
         
         #endregion
         
@@ -110,10 +114,14 @@ namespace TankBattle
             // 设置连接状态
             State = ConnectionState.Connecting;
             
+            // 获取回调
+            spawnWorldCallback = GameLauncher.Instance.OnSpawnWorld;
+            
             // 获取 Fade 动画
             MMF_Player fadeDirectional = MMFadeUtility.GetFadeDirectionalPlayer();
             fadeDirectional.PlayFeedbacks();
 
+            // JoinSessionLobby
             StartGameResult result = await NetworkRunner.JoinSessionLobby(sessionLobbyType, lobbyID);
             if (result.Ok)
             {
@@ -138,6 +146,7 @@ namespace TankBattle
                 State = ConnectionState.Disconnected;
             }
             
+            // 继续播放 Fade 动画
             fadeDirectional.ResumeFeedbacks();
         }
 
@@ -195,6 +204,17 @@ namespace TankBattle
         public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
         {
             Debug.Log("PlayerJoined");
+
+            Debug.Log($"[FusionLauncher] <OnPlayerJoined> IsServer {runner.IsServer}");
+            // 只有服务器才处理
+            if (runner.IsServer && spawnWorldCallback != null)
+            {
+                Debug.Log($"[FusionLauncher] <OnPlayerJoined> 服务端处理");
+                spawnWorldCallback?.Invoke(runner);
+                spawnWorldCallback = null;
+            }
+            
+            spawnPlayerCallback?.Invoke(runner, player);
         }
 
         public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)

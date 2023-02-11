@@ -46,6 +46,11 @@ namespace QAssetBundle
         public const string BundleName = "c_png";
         public const string C = "c";
     }
+    public class Gamemanager_prefab
+    {
+        public const string BundleName = "gamemanager_prefab";
+        public const string GAMEMANAGER = "gamemanager";
+    }
     public class Imageprefaba_prefab
     {
         public const string BundleName = "imageprefaba_prefab";
